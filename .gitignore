@@ -33,3 +33,6 @@ pnpm-debug.log*
 public/episodes/*.mp3
 public/episodes/*.png
 !public/samples/
+
+# Local application materials (not for public repo)
+APPLICATION.md
