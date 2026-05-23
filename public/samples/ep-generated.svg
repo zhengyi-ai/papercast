@@ -12,5 +12,5 @@
   </g>
   <circle cx="400" cy="300" r="120" fill="#ff6a3d" opacity="0.85" />
   <text x="400" y="100" fill="#d4d4da" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="20" text-anchor="middle" letter-spacing="6">PAPERCAST · GENERATED</text>
-  <text x="400" y="500" fill="#ffffff" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="22" text-anchor="middle">由 MiMo V2.5 实时生成的封面占位</text>
+  <text x="400" y="500" fill="#ffffff" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="22" text-anchor="middle">AI 实时生成的封面占位</text>
 </svg>

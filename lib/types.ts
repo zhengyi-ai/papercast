@@ -59,6 +59,6 @@ export type GenerateEpisodeResult = {
   }>;
 };
 
-export type MimoScriptResponse = {
+export type ScriptResponse = {
   segments: Segment[];
 };

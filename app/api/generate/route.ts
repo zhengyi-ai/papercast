@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { fetchPaperFromArxiv, isArxivUrl } from "@/lib/arxiv";
-import { generateEpisodeFromPaper, shouldUseMock } from "@/lib/mimo";
+import { generateEpisodeFromPaper, shouldUseMock } from "@/lib/models";
 import type { Paper } from "@/lib/types";
 
 export const runtime = "nodejs";

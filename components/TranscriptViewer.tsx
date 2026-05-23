@@ -9,7 +9,7 @@ export function TranscriptViewer({ cues }: Props) {
     <div className="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-semibold text-ink-900">文字稿</h3>
-        <span className="text-xs text-ink-400">由 MiMo V2.5 Reason 生成</span>
+        <span className="text-xs text-ink-400">由 AI 生成</span>
       </div>
       <ol className="space-y-4">
         {cues.map((cue, index) => {

@@ -18,7 +18,7 @@ export default function GeneratePage() {
       <header className="space-y-3">
         <h1 className="text-3xl font-semibold tracking-tight text-ink-900">生成你的论文播客</h1>
         <p className="text-sm leading-relaxed text-ink-600">
-          粘贴 arXiv 链接，PaperCast 会用 MiMo V2.5 的三种能力依次完成解析、脚本、封面与双人配音。当前为 mock 模式：流程完整可见，不消耗 token。
+          粘贴 arXiv 链接，PaperCast 会依次完成解析、脚本、封面与双人配音四个步骤。当前为 mock 模式：流程完整可见，不消耗 token。
         </p>
       </header>
 
@@ -51,7 +51,7 @@ export default function GeneratePage() {
                     : "rounded-full bg-ink-100 px-3 py-1 text-xs text-ink-600"
                 }
               >
-                {result.mode === "live" ? "MiMo V2.5 实时生成" : "Mock 演示模式"}
+                {result.mode === "live" ? "AI 实时生成" : "Mock 演示模式"}
               </span>
             </div>
           </div>

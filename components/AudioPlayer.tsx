@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Pause, Play, Volume2 } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 
 type Props = {
   src: string;

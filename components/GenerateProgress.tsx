@@ -11,9 +11,9 @@ type Props = {
 
 const STEPS = [
   { id: "fetch-paper", label: "解析 arXiv 元信息", description: "拿到论文标题、摘要、作者", icon: FileSearch },
-  { id: "generate-script", label: "生成双人对话脚本", description: "MiMo V2.5 Reason 写出 8-12 分钟脚本", icon: Sparkles },
-  { id: "generate-cover", label: "生成播客封面", description: "MiMo V2.5 Vision 文生图", icon: ImageIcon },
-  { id: "synthesize-audio", label: "合成双人音频", description: "MiMo V2.5 TTS 主播 / 嘉宾双音色", icon: Mic }
+  { id: "generate-script", label: "生成双人对话脚本", description: "AI 推理模型写出 8-12 分钟脚本", icon: Sparkles },
+  { id: "generate-cover", label: "生成播客封面", description: "AI 文生图模型产出封面", icon: ImageIcon },
+  { id: "synthesize-audio", label: "合成双人音频", description: "AI 语音合成主播 / 嘉宾双音色", icon: Mic }
 ];
 
 export function GenerateProgress({ state }: Props) {

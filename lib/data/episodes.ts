@@ -86,44 +86,42 @@ export const episodes: Episode[] = [
   },
   {
     id: "ep003",
-    slug: "mimo-v25-multimodal-reasoning",
-    title: "MiMo V2.5：小米的多模态推理大模型",
-    subtitle: "如果把推理、视觉和语音放到同一个创作链路里，会发生什么？",
-    summary: "这一集回到 PaperCast 自己的技术底座，解释 MiMo V2.5 为什么适合作为中文论文播客的统一模型平台。",
-    duration: "13 分钟",
+    slug: "attention-is-all-you-need",
+    title: "Attention Is All You Need：Transformer 是如何改变一切的",
+    subtitle: "一篇 2017 年的论文，为什么至今仍是整个大模型时代的原点？",
+    summary: "回到起点，Lin 和 Wei 拆解 Transformer 架构的四个关键词：自注意力、多头、位置编码、残差连接。",
+    duration: "10 分钟",
     coverUrl: "/samples/ep003.svg",
     audioUrl: "/samples/mock-audio.mp3",
     publishedAt: "2026-05-08T08:00:00.000Z",
-    tags: ["MiMo", "Multimodal", "TTS"],
+    tags: ["Architecture", "Transformer", "Attention"],
     paper: {
-      title: "MiMo V2.5 Technical Report",
-      abstract: "MiMo V2.5 is a multimodal reasoning model family with integrated visual generation and speech capabilities.",
-      authors: ["Xiaomi MiMo Team"],
-      url: "https://100t.xiaomimimo.com/"
+      title: "Attention Is All You Need",
+      abstract: "We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.",
+      authors: ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Łukasz Kaiser", "Illia Polosukhin"],
+      url: "https://arxiv.org/abs/1706.03762"
     },
     script: [
-      { speaker: "host", text: "今天这一集，我们不讲别人，直接讲 PaperCast 背后的模型底座：MiMo V2.5。为什么我们会觉得它特别适合做论文播客？" },
-      { speaker: "guest", text: "核心原因是，它不是只有一个单点能力强，而是推理、多模态生成、语音合成这三块能放进同一条生产链路里。对创作者来说，这种统一性非常重要。" },
-      { speaker: "host", text: "因为如果一篇论文先交给 A 模型总结，再交给 B 模型出图，再交给 C 模型配音，中间风格、语气和信息密度都可能断裂。" },
-      { speaker: "guest", text: "对，PaperCast 要做的是一种连续体验。MiMo 的 reason 模型负责先把论文吃透，再把复杂内容改写成适合听的双人对话；vision 负责把抽象概念转成统一风格的封面；tts 则把脚本变成真正可消费的音频。" },
-      { speaker: "host", text: "这里有个很关键的差别：论文播客不是把摘要念一遍，而是要把‘听众可能卡住的地方’提前想出来，然后在脚本里自然拆开。这个过程其实非常依赖推理质量。" },
-      { speaker: "guest", text: "没错，所以我们更看重模型是否能稳定完成长文本理解、信息取舍、口语化重写这三步。推理能力如果不够，最后听起来就会像 AI 在背书。" },
-      { speaker: "host", text: "而封面这件事虽然看上去像加分项，但对内容传播特别重要。一个统一、克制、有科技感的视觉风格，会让整个栏目像一个真正的产品，而不是零散 demo。" },
-      { speaker: "guest", text: "至于 TTS，重点不只是发音清楚，而是两位角色要有区分度。主持人更温暖、更带节奏，嘉宾更稳定、更像在解释概念。这样听感才会接近真实播客。" },
-      { speaker: "host", text: "所以从创作链路看，MiMo V2.5 的价值不是三项能力并列摆着，而是它们能串成一条‘理解论文 → 讲给人听 → 让人愿意点开’的闭环。" },
-      { speaker: "guest", text: "这也是我们申请 Orbit 计划的原因。我们不是把 token 花在抽象 benchmark 上，而是花在一集一集可公开传播的内容上，让更多人用更低门槛追上前沿论文。" }
+      { speaker: "host", text: "今天这集我们要回到 2017 年，聊一篇改变了整个行业的论文：Attention Is All You Need。如果大模型是一座摩天大楼，这篇论文就是它的地基。" },
+      { speaker: "guest", text: "没错。标题本身就是一句宣言：注意力机制就足够。不需要循环神经网络，不需要卷积，只需要一种全新的结构，靠’注意’来理解序列之间的关系。" },
+      { speaker: "host", text: "对没接触过的听众，可以把注意力想成：读书时，你不是逐字读，而是自然地对关键词和上下文关系更敏感。Transformer 就是把这种’重点感知’变成了可训练的数学机制。" },
+      { speaker: "guest", text: "而且它还做了’多头’：不是只看一种关系，而是同时用多个视角去理解同一段文本。有的头关注语法结构，有的关注语义距离，有的关注指代关系。" },
+      { speaker: "host", text: "另一个巧妙的设计是位置编码。因为注意力本身不关心顺序，作者在输入里手工注入了位置信息，让模型知道’前面’和’后面’的区别。" },
+      { speaker: "guest", text: "对，再加上残差连接和层归一化，让深层网络也能稳定训练。这四个设计组合起来，在当年的机器翻译任务上直接碾压了当时最好的 RNN 模型。" },
+      { speaker: "host", text: "但我觉得这篇论文真正的贡献，不是翻译任务的表现，而是它提供了一个’可并行’的架构。RNN 必须一步一步处理序列，Transformer 可以同时看所有位置，训练效率天差地别。" },
+      { speaker: "guest", text: "这就是为什么后来 GPT、BERT、T5 所有这些里程碑模型都基于 Transformer。它不一定是最优雅的理论，但它是最适合规模化训练的骨架。" },
+      { speaker: "host", text: "局限也有：自注意力的计算量随序列长度平方增长，这也是后来 Mamba 这些新架构试图突破的方向。但回头看，2017 年的这八个作者提出的是一个真正经得起时间考验的方案。" }
     ],
     transcript: [
-      { time: "00:00", speaker: "Lin", text: "今天这一集，我们不讲别人，直接讲 PaperCast 背后的模型底座：MiMo V2.5。为什么我们会觉得它特别适合做论文播客？" },
-      { time: "00:32", speaker: "Wei", text: "核心原因是，它不是只有一个单点能力强，而是推理、多模态生成、语音合成这三块能放进同一条生产链路里。对创作者来说，这种统一性非常重要。" },
-      { time: "01:05", speaker: "Lin", text: "因为如果一篇论文先交给 A 模型总结，再交给 B 模型出图，再交给 C 模型配音，中间风格、语气和信息密度都可能断裂。" },
-      { time: "01:35", speaker: "Wei", text: "对，PaperCast 要做的是一种连续体验。MiMo 的 reason 模型负责先把论文吃透，再把复杂内容改写成适合听的双人对话；vision 负责把抽象概念转成统一风格的封面；tts 则把脚本变成真正可消费的音频。" },
-      { time: "02:14", speaker: "Lin", text: "这里有个很关键的差别：论文播客不是把摘要念一遍，而是要把‘听众可能卡住的地方’提前想出来，然后在脚本里自然拆开。这个过程其实非常依赖推理质量。" },
-      { time: "02:50", speaker: "Wei", text: "没错，所以我们更看重模型是否能稳定完成长文本理解、信息取舍、口语化重写这三步。推理能力如果不够，最后听起来就会像 AI 在背书。" },
-      { time: "03:25", speaker: "Lin", text: "而封面这件事虽然看上去像加分项，但对内容传播特别重要。一个统一、克制、有科技感的视觉风格，会让整个栏目像一个真正的产品，而不是零散 demo。" },
-      { time: "04:00", speaker: "Wei", text: "至于 TTS，重点不只是发音清楚，而是两位角色要有区分度。主持人更温暖、更带节奏，嘉宾更稳定、更像在解释概念。这样听感才会接近真实播客。" },
-      { time: "04:35", speaker: "Lin", text: "所以从创作链路看，MiMo V2.5 的价值不是三项能力并列摆着，而是它们能串成一条‘理解论文 → 讲给人听 → 让人愿意点开’的闭环。" },
-      { time: "05:08", speaker: "Wei", text: "这也是我们申请 Orbit 计划的原因。我们不是把 token 花在抽象 benchmark 上，而是花在一集一集可公开传播的内容上，让更多人用更低门槛追上前沿论文。" }
+      { time: "00:00", speaker: "Lin", text: "今天这集我们要回到 2017 年，聊一篇改变了整个行业的论文：Attention Is All You Need。如果大模型是一座摩天大楼，这篇论文就是它的地基。" },
+      { time: "00:30", speaker: "Wei", text: "没错。标题本身就是一句宣言：注意力机制就足够。不需要循环神经网络，不需要卷积，只需要一种全新的结构，靠’注意’来理解序列之间的关系。" },
+      { time: "01:04", speaker: "Lin", text: "对没接触过的听众，可以把注意力想成：读书时，你不是逐字读，而是自然地对关键词和上下文关系更敏感。Transformer 就是把这种’重点感知’变成了可训练的数学机制。" },
+      { time: "01:38", speaker: "Wei", text: "而且它还做了’多头’：不是只看一种关系，而是同时用多个视角去理解同一段文本。有的头关注语法结构，有的关注语义距离，有的关注指代关系。" },
+      { time: "02:11", speaker: "Lin", text: "另一个巧妙的设计是位置编码。因为注意力本身不关心顺序，作者在输入里手工注入了位置信息，让模型知道’前面’和’后面’的区别。" },
+      { time: "02:40", speaker: "Wei", text: "对，再加上残差连接和层归一化，让深层网络也能稳定训练。这四个设计组合起来，在当年的机器翻译任务上直接碾压了当时最好的 RNN 模型。" },
+      { time: "03:15", speaker: "Lin", text: "但我觉得这篇论文真正的贡献，不是翻译任务的表现，而是它提供了一个’可并行’的架构。RNN 必须一步一步处理序列，Transformer 可以同时看所有位置，训练效率天差地别。" },
+      { time: "03:52", speaker: "Wei", text: "这就是为什么后来 GPT、BERT、T5 所有这些里程碑模型都基于 Transformer。它不一定是最优雅的理论，但它是最适合规模化训练的骨架。" },
+      { time: "04:28", speaker: "Lin", text: "局限也有：自注意力的计算量随序列长度平方增长，这也是后来 Mamba 这些新架构试图突破的方向。但回头看，2017 年的这八个作者提出的是一个真正经得起时间考验的方案。" }
     ]
   }
 ];

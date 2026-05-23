@@ -1,16 +1,16 @@
 import { buildCoverPrompt, buildScriptPrompt } from "@/lib/prompts";
-import type { Episode, GenerateEpisodeResult, MimoScriptResponse, Paper, Segment, TranscriptCue } from "@/lib/types";
+import type { Episode, GenerateEpisodeResult, ScriptResponse, Paper, Segment, TranscriptCue } from "@/lib/types";
 
-const MIMO_BASE_URL = process.env.MIMO_BASE_URL || "https://api.xiaomimimo.com";
-const MIMO_API_KEY = process.env.MIMO_API_KEY;
-const MIMO_MODEL_REASON = process.env.MIMO_MODEL_REASON || "mimo-v2.5-reason";
-const MIMO_MODEL_VISION = process.env.MIMO_MODEL_VISION || "mimo-v2.5-vision";
-const MIMO_MODEL_TTS = process.env.MIMO_MODEL_TTS || "mimo-v2.5-tts";
-const MIMO_VOICE_HOST = process.env.MIMO_VOICE_HOST || "mimo_lin_zh_warm";
-const MIMO_VOICE_GUEST = process.env.MIMO_VOICE_GUEST || "mimo_wei_zh_natural";
+const LLM_BASE_URL = process.env.LLM_BASE_URL || "https://api.example.com";
+const LLM_API_KEY = process.env.LLM_API_KEY;
+const LLM_MODEL_REASON = process.env.LLM_MODEL_REASON || "reason-model";
+const LLM_MODEL_VISION = process.env.LLM_MODEL_VISION || "vision-model";
+const LLM_MODEL_TTS = process.env.LLM_MODEL_TTS || "tts-model";
+const LLM_VOICE_HOST = process.env.LLM_VOICE_HOST || "voice-host-female";
+const LLM_VOICE_GUEST = process.env.LLM_VOICE_GUEST || "voice-guest-male";
 
 export function shouldUseMock() {
-  return process.env.MIMO_USE_MOCK !== "false" || !MIMO_API_KEY;
+  return process.env.LLM_USE_MOCK !== "false" || !LLM_API_KEY;
 }
 
 function slugify(input: string) {
@@ -49,7 +49,7 @@ function createEpisodeFromPaper(paper: Paper, script: Segment[], coverUrl: strin
     coverUrl,
     audioUrl,
     publishedAt: new Date().toISOString(),
-    tags: ["AI", "arXiv", "MiMo V2.5"],
+    tags: ["AI", "arXiv"],
     paper,
     script,
     transcript: createTranscript(script)
@@ -88,23 +88,23 @@ function mockScript(paper: Paper): Segment[] {
     },
     {
       speaker: "guest",
-      text: "没错，所以更稳妥的结论不是‘它会彻底取代旧范式’，而是它证明了一条很有前景的新方向：未来的大模型架构，未必只有一种主流答案。"
+      text: "没错，所以更稳妥的结论不是'它会彻底取代旧范式'，而是它证明了一条很有前景的新方向：未来的大模型架构，未必只有一种主流答案。"
     }
   ];
 }
 
 async function postJson(path: string, body: unknown) {
-  const response = await fetch(`${MIMO_BASE_URL}${path}`, {
+  const response = await fetch(`${LLM_BASE_URL}${path}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${MIMO_API_KEY}`
+      Authorization: `Bearer ${LLM_API_KEY}`
     },
     body: JSON.stringify(body)
   });
 
   if (!response.ok) {
-    throw new Error(`MiMo API 调用失败：${response.status}`);
+    throw new Error(`API 调用失败：${response.status}`);
   }
 
   return response.json();
@@ -117,7 +117,7 @@ export async function generateScript(paper: Paper): Promise<Segment[]> {
 
   const prompt = buildScriptPrompt(paper);
   const data = await postJson("/v1/chat/completions", {
-    model: MIMO_MODEL_REASON,
+    model: LLM_MODEL_REASON,
     response_format: { type: "json_object" },
     messages: [
       {
@@ -126,16 +126,16 @@ export async function generateScript(paper: Paper): Promise<Segment[]> {
       },
       {
         role: "user",
-        content: `${prompt}\n\n请返回 { \"segments\": [...] }`
+        content: `${prompt}\n\n请返回 { "segments": [...] }`
       }
     ]
   });
 
   const raw = data?.choices?.[0]?.message?.content;
-  const parsed = typeof raw === "string" ? JSON.parse(raw) as MimoScriptResponse : raw;
+  const parsed = typeof raw === "string" ? JSON.parse(raw) as ScriptResponse : raw;
 
   if (!parsed?.segments?.length) {
-    throw new Error("MiMo 没有返回有效脚本。");
+    throw new Error("模型没有返回有效脚本。");
   }
 
   return parsed.segments;
@@ -148,7 +148,7 @@ export async function generateCover(paper: Paper): Promise<string> {
 
   const prompt = buildCoverPrompt(paper);
   const data = await postJson("/v1/images/generations", {
-    model: MIMO_MODEL_VISION,
+    model: LLM_MODEL_VISION,
     prompt,
     size: "1024x1024"
   });
@@ -156,7 +156,7 @@ export async function generateCover(paper: Paper): Promise<string> {
   const imageUrl = data?.data?.[0]?.url;
 
   if (!imageUrl) {
-    throw new Error("MiMo 没有返回封面图片。");
+    throw new Error("模型没有返回封面图片。");
   }
 
   return imageUrl;
@@ -170,8 +170,8 @@ export async function synthesizeAudio(script: Segment[]): Promise<string> {
   const clips = await Promise.all(
     script.map(async (segment) => {
       const data = await postJson("/v1/audio/speech", {
-        model: MIMO_MODEL_TTS,
-        voice: segment.speaker === "host" ? MIMO_VOICE_HOST : MIMO_VOICE_GUEST,
+        model: LLM_MODEL_TTS,
+        voice: segment.speaker === "host" ? LLM_VOICE_HOST : LLM_VOICE_GUEST,
         input: segment.text,
         format: "mp3"
       });
