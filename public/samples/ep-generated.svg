@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Generated episode placeholder">
+  <defs>
+    <linearGradient id="bg-gen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f1f24" />
+      <stop offset="100%" stop-color="#4a4a52" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-gen)" />
+  <g stroke="#ffffff" stroke-width="1" opacity="0.18">
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="400" x2="800" y2="400" />
+  </g>
+  <circle cx="400" cy="300" r="120" fill="#ff6a3d" opacity="0.85" />
+  <text x="400" y="100" fill="#d4d4da" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="20" text-anchor="middle" letter-spacing="6">PAPERCAST · GENERATED</text>
+  <text x="400" y="500" fill="#ffffff" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="22" text-anchor="middle">由 MiMo V2.5 实时生成的封面占位</text>
+</svg>

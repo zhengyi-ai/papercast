@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: #f7f7f8;
+  color: #0d0d10;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(255, 106, 61, 0.18);
+  color: #1f1f24;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

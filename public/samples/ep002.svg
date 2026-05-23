@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Mamba 状态空间模型">
+  <defs>
+    <linearGradient id="bg-ep002" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0d10" />
+      <stop offset="100%" stop-color="#252835" />
+    </linearGradient>
+    <linearGradient id="wave-ep002" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5b8def" stop-opacity="0" />
+      <stop offset="50%" stop-color="#5b8def" stop-opacity="1" />
+      <stop offset="100%" stop-color="#5b8def" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-ep002)" />
+  <path d="M 0 360 Q 200 260 400 360 T 800 360" fill="none" stroke="url(#wave-ep002)" stroke-width="3" />
+  <path d="M 0 400 Q 200 320 400 400 T 800 400" fill="none" stroke="#5b8def" stroke-width="2" opacity="0.45" />
+  <path d="M 0 440 Q 200 380 400 440 T 800 440" fill="none" stroke="#5b8def" stroke-width="1.5" opacity="0.25" />
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="160" cy="358" r="6" />
+    <circle cx="320" cy="332" r="6" />
+    <circle cx="480" cy="358" r="6" />
+    <circle cx="640" cy="332" r="6" />
+  </g>
+  <text x="60" y="120" fill="#d4d4da" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="22" letter-spacing="6">EP 002 · PAPERCAST</text>
+  <text x="60" y="190" fill="#ffffff" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="48" font-weight="600">Mamba</text>
+  <text x="60" y="240" fill="#ffffff" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="32" font-weight="500" opacity="0.85">状态空间模型如何挑战 Transformer</text>
+  <text x="60" y="540" fill="#5b8def" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="20">Selective SSM · 长上下文 · 线性时间</text>
+</svg>

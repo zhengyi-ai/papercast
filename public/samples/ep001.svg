@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="DeepSeek-V3 技术报告解读">
+  <defs>
+    <linearGradient id="bg-ep001" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f1f24" />
+      <stop offset="100%" stop-color="#3a3a46" />
+    </linearGradient>
+    <linearGradient id="orb-ep001" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff6a3d" />
+      <stop offset="100%" stop-color="#ffb89e" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-ep001)" />
+  <g opacity="0.18" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="120" x2="800" y2="120" />
+    <line x1="0" y1="240" x2="800" y2="240" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="0" y1="480" x2="800" y2="480" />
+  </g>
+  <circle cx="600" cy="220" r="170" fill="url(#orb-ep001)" opacity="0.85" />
+  <circle cx="600" cy="220" r="120" fill="#1f1f24" opacity="0.6" />
+  <circle cx="600" cy="220" r="70" fill="#ffffff" opacity="0.85" />
+  <text x="60" y="120" fill="#f7f7f8" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="22" letter-spacing="6">EP 001 · PAPERCAST</text>
+  <text x="60" y="190" fill="#ffffff" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="48" font-weight="600">DeepSeek-V3</text>
+  <text x="60" y="240" fill="#ffffff" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="48" font-weight="600">技术报告解读</text>
+  <text x="60" y="500" fill="#ffb89e" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="20">MoE · 训练效率 · 工程取舍</text>
+  <text x="60" y="540" fill="#d4d4da" font-family="ui-sans-serif, PingFang SC, sans-serif" font-size="16">AI 主播 Lin × Wei · 11 分钟</text>
+</svg>
